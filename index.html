@@ -32,12 +32,27 @@
     <body>
       <main class="page">
         <header class="brand">
-          <img
-            src="/assets/images/logo-full.svg"
-            alt="Coding Config logo"
-            class="brand__logo"
-          />
+          <img src="/assets/images/logo-full.svg" alt="Coding Config logo" />
         </header>
+
+        <div class="bg">
+          <!-- <img src="assets/images/pattern-lines.svg" alt="" /> -->
+          <img
+            src="assets/images/pattern-squiggly-line-top.svg"
+            class="bg__circles--tl"
+            alt=""
+          />
+          <img
+            src="assets/images/pattern-squiggly-line-bottom-desktop.svg"
+            class="bg__swirl"
+            alt=""
+          />
+          <img
+            src="assets/images/pattern-circle.svg"
+            class="bg__ring--tl"
+            alt=""
+          />
+        </div>
 
         <!-- ===================== FORM VIEW ===================== -->
         <section class="view" id="formView">
@@ -70,7 +85,7 @@
 
                 <div class="dropzone__empty" id="dropzoneEmpty">
                   <span class="dropzone__icon">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <!-- <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                       <path
                         d="M10 13V3M10 3L6.5 6.5M10 3l3.5 3.5"
                         stroke="white"
@@ -85,7 +100,8 @@
                         stroke-linecap="round"
                         stroke-linejoin="round"
                       />
-                    </svg>
+                    </svg> -->
+                    <img src="assets/images/icon-upload.svg" alt="" />
                   </span>
                   <p class="dropzone__text">Drag and drop or click to upload</p>
                 </div>
@@ -108,27 +124,7 @@
               </div>
 
               <p class="hint" id="avatarHint">
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 14 14"
-                  fill="none"
-                  class="hint__icon"
-                >
-                  <circle
-                    cx="7"
-                    cy="7"
-                    r="6"
-                    stroke="currentColor"
-                    stroke-width="1.1"
-                  />
-                  <path
-                    d="M7 6.2v3.3M7 4.5v.1"
-                    stroke="currentColor"
-                    stroke-width="1.1"
-                    stroke-linecap="round"
-                  />
-                </svg>
+                <img src="assets/images/icon-info.svg" alt="Info icon" />
                 <span id="avatarHintText"
                   >Upload your photo (JPG or PNG, max size: 500KB).</span
                 >
@@ -138,7 +134,7 @@
             <div class="field">
               <label class="field__label" for="fullName">Full Name</label>
               <input
-                class="text-input"
+                class="text-input white-bg"
                 type="text"
                 id="fullName"
                 name="fullName"
