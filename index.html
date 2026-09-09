@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Conference ticket generator</title>
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <!-- <style>
+      .attribution {
+        font-size: 0.6875rem;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style> -->
+  </head>
+  <body>
+    <!-- Form starts -->
+
+    <body>
+      <main class="page">
+        <header class="brand">
+          <img
+            src="/assets/images/logo-full.svg"
+            alt="Coding Config logo"
+            class="brand__logo"
+          />
+        </header>
+
+        <!-- ===================== FORM VIEW ===================== -->
+        <section class="view" id="formView">
+          <h1 class="headline">
+            Your Journey to Coding Conf<br />2025 Starts Here!
+          </h1>
+          <p class="subhead">
+            Secure your spot at next year&rsquo;s biggest coding conference.
+          </p>
+
+          <form class="ticket-form" id="ticketForm" novalidate>
+            <div class="field">
+              <label class="field__label" for="avatarInput"
+                >Upload Avatar</label
+              >
+
+              <div
+                class="dropzone"
+                id="dropzone"
+                tabindex="0"
+                role="button"
+                aria-label="Upload your avatar"
+              >
+                <input
+                  type="file"
+                  id="avatarInput"
+                  accept="image/png,image/jpeg"
+                  hidden
+                />
+
+                <div class="dropzone__empty" id="dropzoneEmpty">
+                  <span class="dropzone__icon">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                      <path
+                        d="M10 13V3M10 3L6.5 6.5M10 3l3.5 3.5"
+                        stroke="white"
+                        stroke-width="1.6"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M3.5 13.5v1.75A1.75 1.75 0 0 0 5.25 17h9.5A1.75 1.75 0 0 0 16.5 15.25V13.5"
+                        stroke="white"
+                        stroke-width="1.6"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </span>
+                  <p class="dropzone__text">Drag and drop or click to upload</p>
+                </div>
+
+                <div class="dropzone__filled" id="dropzoneFilled" hidden>
+                  <img
+                    class="dropzone__preview"
+                    id="avatarPreview"
+                    alt="Your uploaded avatar"
+                  />
+                  <div class="dropzone__actions">
+                    <button type="button" class="ghost-btn" id="removeImageBtn">
+                      Remove image
+                    </button>
+                    <button type="button" class="ghost-btn" id="changeImageBtn">
+                      Change image
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <p class="hint" id="avatarHint">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 14 14"
+                  fill="none"
+                  class="hint__icon"
+                >
+                  <circle
+                    cx="7"
+                    cy="7"
+                    r="6"
+                    stroke="currentColor"
+                    stroke-width="1.1"
+                  />
+                  <path
+                    d="M7 6.2v3.3M7 4.5v.1"
+                    stroke="currentColor"
+                    stroke-width="1.1"
+                    stroke-linecap="round"
+                  />
+                </svg>
+                <span id="avatarHintText"
+                  >Upload your photo (JPG or PNG, max size: 500KB).</span
+                >
+              </p>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="fullName">Full Name</label>
+              <input
+                class="text-input"
+                type="text"
+                id="fullName"
+                name="fullName"
+                autocomplete="name"
+              />
+              <p class="hint hint--error" id="nameHint" hidden></p>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="email">Email Address</label>
+              <input
+                class="text-input"
+                type="email"
+                id="email"
+                name="email"
+                placeholder="example@email.com"
+                autocomplete="email"
+              />
+              <p class="hint hint--error" id="emailHint" hidden>
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 14 14"
+                  fill="none"
+                  class="hint__icon"
+                >
+                  <circle
+                    cx="7"
+                    cy="7"
+                    r="6"
+                    stroke="currentColor"
+                    stroke-width="1.1"
+                  />
+                  <path
+                    d="M7 6.2v3.3M7 4.5v.1"
+                    stroke="currentColor"
+                    stroke-width="1.1"
+                    stroke-linecap="round"
+                  />
+                </svg>
+                <span id="emailHintText"
+                  >Please enter a valid email address.</span
+                >
+              </p>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="github">GitHub Username</label>
+              <input
+                class="text-input"
+                type="text"
+                id="github"
+                name="github"
+                placeholder="@yourusername"
+                autocomplete="off"
+              />
+              <p class="hint hint--error" id="githubHint" hidden></p>
+            </div>
+
+            <button type="submit" class="submit-btn">Generate My Ticket</button>
+          </form>
+        </section>
+
+        <!-- Generated tickets starts -->
+        <section class="view" id="ticketView" hidden>
+          <h1 class="headline">
+            Congrats,
+            <span class="headline__name" id="ticketFirstName">Name</span
+            >!<br />Your ticket is ready.
+          </h1>
+          <p class="subhead">
+            We&rsquo;ve emailed your ticket to<br />
+            <span class="subhead__email" id="ticketEmail">you@email.com</span>
+            and will send updates in the run up to the event.
+          </p>
+
+          <div class="ticket-card">
+            <div class="ticket-card__notch" aria-hidden="true"></div>
+            <div class="ticket-card__body">
+              <div class="ticket-card__top">
+                <svg
+                  width="26"
+                  height="26"
+                  viewBox="0 0 34 34"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path d="M17 3 L23 12 L17 17 L11 12 Z" fill="#FF6B57" />
+                  <path d="M17 31 L11 22 L17 17 L23 22 Z" fill="#FF6B57" />
+                  <path d="M3 17 L12 11 L17 17 L12 23 Z" fill="#FF9E7D" />
+                  <path d="M31 17 L22 23 L17 17 L22 11 Z" fill="#FF9E7D" />
+                </svg>
+                <span class="ticket-card__brand">Coding Conf</span>
+              </div>
+              <p class="ticket-card__meta">
+                Jan 31, 2025 <span class="dot">/</span> Austin, TX
+              </p>
+
+              <div class="ticket-card__attendee">
+                <img class="ticket-card__avatar" id="ticketAvatar" alt="" />
+                <div>
+                  <!-- Full Name -->
+                  <p class="ticket-card__attendee-name" id="ticketFullName">
+                    Full Name
+                  </p>
+                  <p class="ticket-card__attendee-handle">
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 16 16"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38v-1.48c-2.22.48-2.69-1.07-2.69-1.07-.36-.92-.88-1.16-.88-1.16-.72-.49.05-.48.05-.48.8.06 1.22.82 1.22.82.71 1.21 1.87.86 2.33.66.07-.52.28-.86.51-1.06-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.7 7.7 0 0 1 4 0c1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"
+                      />
+                    </svg>
+                    <span id="ticketHandle">@yourusername</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="ticket-card__stub" aria-hidden="true">
+              <span id="ticketNumber">#01609</span>
+            </div>
+          </div>
+        </section>
+        <!-- Generated tickets ends -->
+      </main>
+
+      <script src="script.js"></script>
+    </body>
+
+    <!-- Form ends -->
+
+    <!-- Congrats,  -->
+    <!-- Full Name --><!--! Your ticket is ready. -->
+
+    <!-- We've emailed your ticket to Email Address and will send updates in the run up to the event.
+
+  Coding Conf
+  Jan 31, 2025 / Austin, TX -->
+
+    <footer class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
+      Coded by <a href="#">Your Name Here</a>.
+    </footer>
+  </body>
+</html>
