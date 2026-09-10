@@ -168,10 +168,15 @@ input {
   display: flex;
   flex-direction: column;
   gap: 14px;
+  /* margin-top: 10px; */
 }
 
 .field:nth-child(2) {
   margin-top: 15px;
+}
+
+.field:nth-child(4) {
+  margin-top: 14px;
 }
 
 .field__label {
@@ -183,8 +188,8 @@ input {
   width: 100%;
   background: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.03),
-    rgba(255, 255, 255, 0.06)
+    rgba(255, 255, 255, 0.07),
+    rgba(255, 255, 255, 0.1)
   );
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
@@ -199,9 +204,9 @@ input {
   /* border: 1px solid red; */
 }
 
-.white-bg {
+/* .white-bg {
   background: linear-gradient(rgba(255, 255, 255, 0.2));
-}
+} */
 
 .text-input::placeholder {
   color: var(--text);
@@ -211,6 +216,7 @@ input {
   border-color: var(--border-soft);
 }
 .text-input:focus {
+  /* background: rgba(255, 255, 255, 0.1); */
   border-color: var(--border-soft);
   box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.12);
 }
@@ -318,7 +324,7 @@ input {
 
 .hint {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 6px;
   margin: 0 0 0px;
   /* border: 1px solid red; */
@@ -328,6 +334,7 @@ input {
 .hint__icon {
   flex-shrink: 0;
   margin-top: 2px;
+  color: var(--error);
 }
 .hint--error {
   color: var(--error);
@@ -347,6 +354,7 @@ input {
     background 0.15s ease,
     box-shadow 0.15s ease,
     transform 0.05s ease;
+  margin-top: -5px;
 }
 .submit-btn:hover {
   background: #ff8871;
