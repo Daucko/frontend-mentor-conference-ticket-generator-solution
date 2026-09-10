@@ -73,6 +73,19 @@ input {
   top: 38%;
   right: 6%;
 }
+
+.bg__ring--tl {
+  position: absolute;
+  top: -85px;
+  left: 93px;
+}
+
+.bg__ring--tr {
+  position: absolute;
+  top: 42.5vw;
+  right: 217px;
+}
+
 .bg__ring {
   position: absolute;
   top: 6%;
@@ -191,7 +204,7 @@ input {
 }
 
 .text-input::placeholder {
-  color: var(--text-faint);
+  color: var(--text);
 }
 .text-input:hover {
   background: rgba(255, 255, 255, 0.09);
