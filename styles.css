@@ -134,25 +134,47 @@ input {
   font-size: clamp(3.3rem, 60px, 4.5rem);
   line-height: 1.1;
   font-weight: 800;
-  margin: 0 0 23px;
+  margin: 4px 0 35px;
   letter-spacing: -0.01em;
   width: 70vw;
   /* border: 2px solid red; */
 }
+
 .headline__name {
-  color: var(--coral-light);
+  /* Fallback color for very old browsers */
+  color: #ff7e5f;
+
+  /* Extra bold font sizes make gradients look significantly better */
+  font-size: 3rem;
+  font-weight: 800;
+  display: inline-block;
+}
+
+/* Feature query to apply gradient safely to supporting browsers */
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  .headline__name {
+    background-image: linear-gradient(
+      45deg,
+      hsl(7, 86%, 67%),
+      hsl(0, 0%, 100%)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent; /* Overrides the fallback color */
+    color: transparent;
+  }
 }
 
 .subhead {
   color: var(--text-dim);
   font-size: 1.5rem;
-  /* line-height: 1.6; */
-  /* max-width: 460px; */
+  line-height: 1.6;
+  max-width: 590px;
   margin: 0 auto 50px;
 }
-/* .subhead__email {
+.subhead__email {
   color: var(--coral-light);
-} */
+}
 
 /* ---------- form ---------- */
 .ticket-form {
@@ -370,12 +392,12 @@ input {
 /* ---------- ticket card ---------- */
 .ticket-card {
   position: relative;
-  max-width: 460px;
+  max-width: 600px;
   margin: 0 auto;
   display: flex;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  border: 1px solid rgba(255, 107, 87, 0.5);
+  /* border: 2px solid rgba(255, 107, 87, 0.5); */
   background: linear-gradient(
     135deg,
     rgba(255, 255, 255, 0.08),
@@ -385,27 +407,69 @@ input {
   text-align: left;
 }
 
+.ticket-card {
+  /* 1. Create a transparent border to make space for the gradient */
+  border: 2px solid transparent;
+  border-radius: 16px;
+
+  /* 2. Layer 1: Solid inner background (clipped to padding) 
+        Layer 2: Gradient outer background (clipped to border edge) */
+  background:
+    linear-gradient(#1c2333, #1c2333) padding-box,
+    linear-gradient(to right, #fff, #ff757d) border-box;
+
+  /* Creates a diamond shape */
+
+  -webkit-mask-image:
+    radial-gradient(
+      ellipse 30px 15px at 82% 0%,
+      transparent 100%,
+      rgba(255, 255, 255, 0.895) 100%
+    ),
+    radial-gradient(
+      ellipse 30px 15px at 82% 100%,
+      transparent 100%,
+      rgba(255, 255, 255, 0.895) 100%
+    );
+  mask-image:
+    radial-gradient(
+      ellipse 30px 15px at 82% 0%,
+      transparent 100%,
+      rgba(104, 99, 99, 0.868) 100%
+    ),
+    radial-gradient(
+      ellipse 30px 15px at 82% 100%,
+      transparent 100%,
+      rgba(104, 99, 99, 0.868) 100%
+    );
+
+  /* Combines both mask positions together so you see everything else */
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+
 .ticket-card__body {
   flex: 1;
-  padding: 24px;
+  padding: 26px 24px 21px;
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
 .ticket-card__top {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  width: 290px;
+  object-fit: contain;
+  /* height: 50px; */
+  /* border: 1px solid red; */
 }
-.ticket-card__brand {
+/* .ticket-card__brand {
   font-weight: 700;
   font-size: 1.1rem;
-}
+} */
 .ticket-card__meta {
-  margin: 0;
+  margin-top: -6px;
   color: var(--text-dim);
-  font-size: 0.85rem;
+  font-size: 1rem;
 }
 .ticket-card__meta .dot {
   color: var(--text-faint);
@@ -415,19 +479,20 @@ input {
 .ticket-card__attendee {
   display: flex;
   align-items: center;
-  gap: 14px;
-  margin-top: 4px;
+  gap: 15px;
+  margin-top: 45px;
 }
 .ticket-card__avatar {
-  width: 54px;
-  height: 54px;
+  width: 80px;
+  height: 80px;
   border-radius: 10px;
   object-fit: cover;
 }
 .ticket-card__attendee-name {
-  margin: 0 0 4px;
-  font-weight: 700;
-  font-size: 1rem;
+  margin: 0 0 10px;
+  font-weight: 500;
+  font-size: 1.8rem;
+  color: #fff;
 }
 .ticket-card__attendee-handle {
   margin: 0;
@@ -435,27 +500,53 @@ input {
   align-items: center;
   gap: 6px;
   color: var(--text-dim);
-  font-size: 0.85rem;
+  font-size: 1rem;
 }
 
 .ticket-card__stub {
-  width: 56px;
+  width: 105px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-left: 1.5px dashed rgba(255, 255, 255, 0.3);
+  /* padding-block: 20px; */
+  margin-block: 30px;
+  border-left: 3px dashed rgba(255, 255, 255, 0.3);
 }
 .ticket-card__stub span {
   writing-mode: vertical-rl;
-  transform: rotate(180deg);
+  transform: rotate(360deg);
   color: var(--text-faint);
-  font-size: 0.75rem;
+  font-size: 1.7rem;
   letter-spacing: 0.05em;
 }
 
 /* notch cut-outs, purely decorative */
 .ticket-card__notch {
   display: none;
+}
+
+.ticket-top__cutout {
+  position: absolute;
+  top: -22px;
+  right: 76px;
+  width: 60px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-top);
+  z-index: 999;
+  border: #ff757d 2px solid;
+}
+
+.ticket-bottom__cutout {
+  position: absolute;
+  bottom: -22px;
+  right: 76px;
+  width: 60px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-bottom);
+  z-index: 999;
+  border: #ff757d 2px solid;
 }
 
 /* ---------- responsive ---------- */
