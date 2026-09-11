@@ -9,7 +9,7 @@
   --bg-bottom: #3a1e70;
   --panel: #1c1332;
   --panel-soft: rgba(255, 255, 255, 0.05);
-  --border: rgba(255, 255, 255, 0.15);
+  --border: #8784a4;
   --border-soft: rgba(255, 255, 255, 0.35);
   --text: #ffffff;
   --text-dim: #c3bcd6;
@@ -234,11 +234,13 @@ input {
   color: var(--text);
 }
 .text-input:hover {
-  background: rgba(255, 255, 255, 0.09);
+  background: rgba(255, 255, 255, 0.3);
   border-color: var(--border-soft);
 }
 .text-input:focus {
   /* background: rgba(255, 255, 255, 0.1); */
+  outline: 2px solid var(--border);
+  outline-offset: 6px;
   border-color: var(--border-soft);
   box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.12);
 }
@@ -271,8 +273,9 @@ input {
 }
 .dropzone:focus-visible,
 .dropzone.is-focused {
-  outline: none;
-  border-color: var(--border-soft);
+  outline: 2px solid var(--border);
+  outline-offset: 6px;
+  /* border-color: var(--border-soft); */
   box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.12);
 }
 .dropzone.is-dragover {
@@ -383,9 +386,10 @@ input {
 }
 .submit-btn:active {
   transform: translateY(1px);
+  outline: 2px solid #fff;
+  outline-offset: 3px;
 }
 .submit-btn:focus-visible {
-  outline: none;
   box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.35);
 }
 
