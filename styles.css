@@ -393,7 +393,7 @@ input {
 .ticket-card {
   position: relative;
   max-width: 600px;
-  margin: 0 auto;
+  margin: 105px auto 0;
   display: flex;
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -547,6 +547,15 @@ input {
   background: var(--bg-bottom);
   z-index: 999;
   border: #ff757d 2px solid;
+}
+
+.attribution {
+  background: rgba(0, 0, 0, 0.5);
+  font-size: 0.6875rem;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
 }
 
 /* ---------- responsive ---------- */
