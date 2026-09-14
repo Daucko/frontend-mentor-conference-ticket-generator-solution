@@ -62,16 +62,12 @@ input {
   pointer-events: none;
   overflow: hidden;
 }
-.bg__circles--tl {
+
+.bg__swirl--tl {
   position: absolute;
   top: 80px;
   right: -40px;
   /* pointer-events: none; */
-}
-.bg__circles--mr {
-  position: absolute;
-  top: 38%;
-  right: 6%;
 }
 
 .bg__ring--tl {
@@ -91,11 +87,21 @@ input {
   top: 6%;
   right: -2%;
 }
+
 .bg__swirl {
   position: absolute;
   left: 0px;
   bottom: 0px;
   z-index: -1;
+  /* pointer-events: none; */
+}
+
+.bg__swirl-mobile {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  z-index: -1;
+  display: none;
   /* pointer-events: none; */
 }
 
@@ -120,18 +126,13 @@ input {
   gap: 10px;
   margin-bottom: 58px;
 }
-/* .brand__name {
-  font-weight: 700;
-  font-size: 1.05rem;
-  letter-spacing: 0.02em;
-} */
 
 .view {
   text-align: center;
 }
 
 .headline {
-  font-size: clamp(3.3rem, 60px, 4.5rem);
+  font-size: clamp(53px, 60px, 77px);
   line-height: 1.1;
   font-weight: 800;
   margin: 4px 0 35px;
@@ -145,7 +146,7 @@ input {
   color: #ff7e5f;
 
   /* Extra bold font sizes make gradients look significantly better */
-  font-size: 3rem;
+  font-size: 48px;
   font-weight: 800;
   display: inline-block;
 }
@@ -167,7 +168,7 @@ input {
 
 .subhead {
   color: var(--text-dim);
-  font-size: 1.5rem;
+  font-size: 24px;
   line-height: 1.6;
   max-width: 590px;
   margin: 0 auto 50px;
@@ -202,7 +203,7 @@ input {
 }
 
 .field__label {
-  font-size: 1.125rem;
+  font-size: 18px;
   color: var(--text);
 }
 
@@ -217,7 +218,7 @@ input {
   border-radius: var(--radius-md);
   padding: 18px 16px;
   color: var(--text);
-  font-size: 0.95rem;
+  font-size: 16px;
   outline: none;
   transition:
     border-color 0.15s ease,
@@ -305,7 +306,7 @@ input {
 .dropzone__text {
   margin: 0;
   color: var(--text-dim);
-  font-size: 0.9rem;
+  font-size: 15px;
 }
 
 .dropzone__filled {
@@ -330,7 +331,7 @@ input {
   background: rgba(0, 0, 0, 0.35);
   border: 1px solid var(--border);
   color: var(--text);
-  font-size: 0.78rem;
+  font-size: 13px;
   padding: 6px 12px;
   border-radius: 8px;
   cursor: pointer;
@@ -353,7 +354,7 @@ input {
   gap: 6px;
   margin: 0 0 0px;
   /* border: 1px solid red; */
-  font-size: 0.765rem;
+  font-size: 13px;
   color: var(--text-faint);
 }
 .hint__icon {
@@ -370,7 +371,7 @@ input {
   background: var(--coral);
   color: var(--text-navy-blue);
   font-weight: 800;
-  font-size: 1.125rem;
+  font-size: 18px;
   border: none;
   border-radius: var(--radius-md);
   padding: 20px 0;
@@ -397,34 +398,37 @@ input {
 .ticket-card {
   position: relative;
   max-width: 600px;
-  margin: 105px auto 0;
+  margin: 105px auto 150px;
   display: flex;
-  border-radius: var(--radius-lg);
+  /* border-radius: var(--radius-lg); */
   overflow: hidden;
+  background-image: url(assets/images/pattern-ticket.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
   /* border: 2px solid rgba(255, 107, 87, 0.5); */
-  background: linear-gradient(
+  /* background: linear-gradient(
     135deg,
     rgba(255, 255, 255, 0.08),
     rgba(76, 29, 149, 0.35)
   );
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px); */
   text-align: left;
 }
 
 .ticket-card {
   /* 1. Create a transparent border to make space for the gradient */
-  border: 2px solid transparent;
-  border-radius: 16px;
+  /* border: 2px solid transparent;
+  border-radius: 16px; */
 
   /* 2. Layer 1: Solid inner background (clipped to padding) 
         Layer 2: Gradient outer background (clipped to border edge) */
-  background:
+  /* background:
     linear-gradient(#1c2333, #1c2333) padding-box,
-    linear-gradient(to right, #fff, #ff757d) border-box;
+    linear-gradient(to right, #fff, #ff757d) border-box; */
 
   /* Creates a diamond shape */
 
-  -webkit-mask-image:
+  /* -webkit-mask-image:
     radial-gradient(
       ellipse 30px 15px at 82% 0%,
       transparent 100%,
@@ -445,11 +449,11 @@ input {
       ellipse 30px 15px at 82% 100%,
       transparent 100%,
       rgba(104, 99, 99, 0.868) 100%
-    );
+    ); */
 
   /* Combines both mask positions together so you see everything else */
-  -webkit-mask-composite: source-in;
-  mask-composite: intersect;
+  /* -webkit-mask-composite: source-in;
+  mask-composite: intersect; */
 }
 
 .ticket-card__body {
@@ -473,7 +477,7 @@ input {
 .ticket-card__meta {
   margin-top: -6px;
   color: var(--text-dim);
-  font-size: 1rem;
+  font-size: 16px;
 }
 .ticket-card__meta .dot {
   color: var(--text-faint);
@@ -495,7 +499,7 @@ input {
 .ticket-card__attendee-name {
   margin: 0 0 10px;
   font-weight: 500;
-  font-size: 1.8rem;
+  font-size: 29px;
   color: #fff;
 }
 .ticket-card__attendee-handle {
@@ -504,7 +508,7 @@ input {
   align-items: center;
   gap: 6px;
   color: var(--text-dim);
-  font-size: 1rem;
+  font-size: 16px;
 }
 
 .ticket-card__stub {
@@ -514,13 +518,13 @@ input {
   justify-content: center;
   /* padding-block: 20px; */
   margin-block: 30px;
-  border-left: 3px dashed rgba(255, 255, 255, 0.3);
+  /* border-left: 3px dashed rgba(255, 255, 255, 0.3); */
 }
 .ticket-card__stub span {
   writing-mode: vertical-rl;
   transform: rotate(360deg);
   color: var(--text-faint);
-  font-size: 1.7rem;
+  font-size: 27px;
   letter-spacing: 0.05em;
 }
 
@@ -529,7 +533,7 @@ input {
   display: none;
 }
 
-.ticket-top__cutout {
+/* .ticket-top__cutout {
   position: absolute;
   top: -22px;
   right: 76px;
@@ -539,9 +543,9 @@ input {
   background: var(--bg-top);
   z-index: 999;
   border: #ff757d 2px solid;
-}
+} */
 
-.ticket-bottom__cutout {
+/* .ticket-bottom__cutout {
   position: absolute;
   bottom: -22px;
   right: 76px;
@@ -551,11 +555,11 @@ input {
   background: var(--bg-bottom);
   z-index: 999;
   border: #ff757d 2px solid;
-}
+} */
 
 .attribution {
   background: rgba(0, 0, 0, 0.5);
-  font-size: 0.6875rem;
+  font-size: 11px;
   text-align: center;
 }
 .attribution a {
@@ -564,6 +568,43 @@ input {
 
 /* ---------- responsive ---------- */
 @media (max-width: 560px) {
+  .bg__swirl--tl {
+    width: 100px;
+    top: 80px;
+    right: -40px;
+    /* pointer-events: none; */
+  }
+
+  .bg__ring--tl {
+    width: 30vw;
+    top: -30px;
+    left: -21px;
+  }
+
+  .bg__ring--tr {
+    width: 32vw;
+    top: 162vw;
+    right: -15vw;
+  }
+
+  .bg__ring {
+    width: 10px;
+    height: 20px;
+    top: 6%;
+    right: -2%;
+  }
+
+  .bg__swirl {
+    display: none;
+    /* pointer-events: none; */
+  }
+
+  .bg__swirl-mobile {
+    display: block;
+    width: 70vw;
+
+    /* pointer-events: none; */
+  }
   .page {
     padding: 32px 20px 64px;
   }
@@ -571,17 +612,21 @@ input {
     margin-bottom: 36px;
   }
   .headline {
-    font-size: 1.5rem;
+    font-size: 24px;
   }
   .subhead {
     margin-bottom: 32px;
-    font-size: 0.9rem;
+    font-size: 15px;
   }
   .ticket-form {
     gap: 20px;
   }
   .dropzone {
     padding: 26px 16px;
+  }
+
+  .submit-btn {
+    margin-bottom: 40px;
   }
 }
 
