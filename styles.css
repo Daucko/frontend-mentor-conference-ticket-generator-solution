@@ -208,7 +208,7 @@ input {
 }
 
 .field:nth-child(2) {
-  margin-top: 15px;
+  margin-top: 3px;
 }
 
 .field:nth-child(4) {
@@ -329,33 +329,37 @@ input {
   gap: 14px;
 }
 .dropzone__preview {
-  width: 56px;
-  height: 56px;
+  width: 45px;
+  height: 45px;
   border-radius: 12px;
   object-fit: cover;
   border: 1px solid var(--border-soft);
 }
 .dropzone__actions {
   display: flex;
-  gap: 10px;
+  gap: 8px;
 }
 
 .ghost-btn {
-  background: rgba(0, 0, 0, 0.35);
-  border: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.09);
+  /* border: 1px solid var(--border); */
+  border: none;
   color: var(--text);
-  font-size: 13px;
-  padding: 6px 12px;
-  border-radius: 8px;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 5px;
   cursor: pointer;
   transition:
     background 0.15s ease,
     border-color 0.15s ease;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.2);
 }
+
 .ghost-btn:hover {
   background: rgba(0, 0, 0, 0.55);
   border-color: var(--border-soft);
 }
+
 .ghost-btn:focus-visible {
   outline: 2px solid var(--border-soft);
   outline-offset: 2px;
@@ -461,7 +465,7 @@ input {
   position: relative;
   z-index: 1;
   flex: 1;
-  padding: 26px 24px 21px;
+  padding: 26px 24px 24px;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -483,6 +487,7 @@ input {
 }
 
 .ticket-card__attendee {
+  border: 1px solid red;
   display: flex;
   align-items: center;
   gap: 15px;
@@ -494,18 +499,26 @@ input {
   border-radius: 10px;
   object-fit: cover;
 }
+
+.attendee__info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
 .ticket-card__attendee-name {
   margin: 0;
-  padding-top: 10px;
+  padding-top: 0px;
   font-weight: 400;
   font-size: 29px;
   color: #fff;
+  /* border: 1px solid red; */
 }
 
 .ticket-card__attendee-handle img {
-  width: 20px;
-  height: 20px;
-  border: 1px solid red;
+  width: 25px;
+  height: 25px;
+  /* border: 1px solid red; */
 }
 
 .ticket-card__attendee-handle {
