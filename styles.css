@@ -124,7 +124,7 @@ input {
 }
 
 .headline {
-  font-size: clamp(53px, 60px, 77px);
+  font-size: clamp(3.3125rem, 3.75rem, 4.8125rem);
   line-height: 1.1;
   font-weight: 800;
   margin: 2px auto 16px;
@@ -525,6 +525,19 @@ input {
 }
 
 /* === responsive === */
+@media (max-width: 1024px) {
+  html,
+  body {
+    background: url('assets/images/background-tablet.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .headline {
+    width: 80vw;
+  }
+}
+
 @media (max-width: 375px) {
   html,
   body {
@@ -598,7 +611,7 @@ input {
     line-height: 1.2;
   }
 
-  /* ---------- form ---------- */
+  /* === form === */
   .ticket-form {
     text-align: left;
     margin: 43px auto 0;
