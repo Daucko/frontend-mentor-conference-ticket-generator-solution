@@ -28,6 +28,10 @@
   box-sizing: border-box;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 html,
 body {
   margin: 0;
@@ -57,7 +61,11 @@ input {
 /* ---------- decorative bg ---------- */
 .bg {
   position: absolute;
-  /* inset: 0; */
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(100vw, 1440px); /* shrinks with device, caps on large screens */
+  height: 100%;
   z-index: 2;
   pointer-events: none;
   overflow: hidden;
@@ -78,8 +86,8 @@ input {
 
 .bg__ring--tr {
   position: absolute;
-  top: 41vw;
-  right: 294px;
+  top: 42vw;
+  right: 218px;
 }
 
 .bg__ring {
@@ -174,8 +182,8 @@ input {
   color: var(--text-dim);
   font-size: 24px;
   line-height: 1.6;
-  max-width: 590px;
-  margin: 0 auto 6px;
+  /* max-width: 600px; */
+  margin: 0 auto 45px;
 }
 .subhead__email {
   color: var(--coral-light);
@@ -188,7 +196,7 @@ input {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 27px;
   border: 1px solid red;
 }
 
@@ -216,8 +224,8 @@ input {
   width: 100%;
   background: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.19),
-    rgba(255, 255, 255, 0.25)
+    rgba(255, 255, 255, 0.06),
+    rgba(255, 255, 255, 0.13)
   );
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
@@ -262,7 +270,7 @@ input {
   border: 1.5px dashed var(--border);
   border-radius: var(--radius-lg);
   background: rgba(255, 255, 255, 0.25);
-  padding: 7px 20px;
+  padding: 20px 20px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -311,7 +319,7 @@ input {
 .dropzone__text {
   margin: 0;
   color: var(--text-dim);
-  font-size: 15px;
+  font-size: 17px;
 }
 
 .dropzone__filled {
@@ -362,11 +370,13 @@ input {
   font-size: 13px;
   color: var(--text-faint);
 }
+
 .hint__icon {
   flex-shrink: 0;
   margin-top: 2px;
   color: var(--error);
 }
+
 .hint--error {
   color: var(--error);
 }
@@ -485,11 +495,19 @@ input {
   object-fit: cover;
 }
 .ticket-card__attendee-name {
-  margin: 0 0 10px;
-  font-weight: 500;
+  margin: 0;
+  padding-top: 10px;
+  font-weight: 400;
   font-size: 29px;
   color: #fff;
 }
+
+.ticket-card__attendee-handle img {
+  width: 20px;
+  height: 20px;
+  border: 1px solid red;
+}
+
 .ticket-card__attendee-handle {
   margin: 0;
   display: flex;
@@ -531,7 +549,7 @@ input {
 }
 
 /* ---------- responsive ---------- */
-@media (max-width: 560px) {
+@media (max-width: 375px) {
   html,
   body {
     background: url('assets/images/background-mobile.png');
@@ -601,8 +619,8 @@ input {
   }
 
   .subhead {
-    margin-bottom: 40px;
-    font-size: 20px;
+    margin-bottom: 0px;
+    font-size: 17.5px;
     line-height: 1.2;
   }
 
@@ -617,9 +635,114 @@ input {
   }
 
   .ticket-form {
-    max-width: 260px;
-    gap: 20px;
+    max-width: 460px;
+    gap: 18px;
     /* padding-inline: 20px; */
+  }
+
+  /* ---------- ticket card ---------- */
+  .ticket-card {
+    position: relative;
+    max-width: 92vw;
+    margin: 105px auto 150px;
+  }
+
+  .ticket-card::after {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: -60%;
+    width: 45%;
+    height: 140%;
+  }
+
+  @keyframes ticket-shimmer {
+    0% {
+      left: -60%;
+    }
+    55% {
+      left: 130%;
+    }
+    100% {
+      left: 130%;
+    }
+  }
+
+  .ticket-card__body {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    padding: 20px 0px 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .ticket-card__top {
+    border: 1px solid red;
+    width: 170px;
+    object-fit: contain;
+  }
+
+  .ticket-card__meta {
+    margin-top: 0px;
+    margin-left: 40px;
+    color: var(--text-dim);
+    font-size: 12px;
+  }
+  .ticket-card__meta .dot {
+    color: var(--text-faint);
+    margin: 0 4px;
+  }
+
+  .ticket-card__attendee {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: -5px;
+    border: 1px solid green;
+  }
+  .ticket-card__avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 5px;
+    object-fit: cover;
+  }
+  .ticket-card__attendee-name {
+    margin: 0 0 10px;
+    font-weight: 500;
+    font-size: 20px;
+    color: #fff;
+  }
+  .ticket-card__attendee-handle {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-dim);
+    font-size: 12px;
+  }
+
+  .ticket-card__stub {
+    width: 105px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* padding-block: 20px; */
+    margin-block: 30px;
+    /* border-left: 3px dashed rgba(255, 255, 255, 0.3); */
+  }
+  .ticket-card__stub span {
+    writing-mode: vertical-rl;
+    transform: rotate(360deg);
+    color: var(--text-faint);
+    font-size: 20px;
+    letter-spacing: 0.05em;
+  }
+
+  /* notch cut-outs, purely decorative */
+  .ticket-card__notch {
+    display: none;
   }
 
   .field {
@@ -642,7 +765,14 @@ input {
     color: var(--text);
   }
   .dropzone {
-    padding: 26px 16px;
+    padding: 20px 10px;
+    border-radius: 10px;
+  }
+
+  .hint {
+    margin: 0 0 0px;
+    /* border: 1px solid red; */
+    font-size: 12px;
   }
 
   .submit-btn {
